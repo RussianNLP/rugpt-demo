@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/rugpt-demo/static/css/main.8255a352.chunk.css",
+    "main.js": "/rugpt-demo/static/js/main.bcbcecb4.chunk.js",
+    "main.js.map": "/rugpt-demo/static/js/main.bcbcecb4.chunk.js.map",
+    "runtime-main.js": "/rugpt-demo/static/js/runtime-main.7fb4d291.js",
+    "runtime-main.js.map": "/rugpt-demo/static/js/runtime-main.7fb4d291.js.map",
+    "static/js/2.af87e8dc.chunk.js": "/rugpt-demo/static/js/2.af87e8dc.chunk.js",
+    "static/js/2.af87e8dc.chunk.js.map": "/rugpt-demo/static/js/2.af87e8dc.chunk.js.map",
+    "index.html": "/rugpt-demo/index.html",
+    "static/css/main.8255a352.chunk.css.map": "/rugpt-demo/static/css/main.8255a352.chunk.css.map",
+    "static/js/2.af87e8dc.chunk.js.LICENSE.txt": "/rugpt-demo/static/js/2.af87e8dc.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7fb4d291.js",
+    "static/js/2.af87e8dc.chunk.js",
+    "static/css/main.8255a352.chunk.css",
+    "static/js/main.bcbcecb4.chunk.js"
+  ]
+}
