@@ -18,7 +18,7 @@ class CloudForm extends React.Component {
   }
   
   handleSubmit = async (event) => {
-   	console.log("Text prompt: ", {"text": JSON.stringify(this.state.text_to_generate)});
+   	// console.log("Text prompt: ", {"text": JSON.stringify(this.state.text_to_generate)});
 
     this.mainInput.value = "Loading...";
     event.preventDefault();
@@ -30,14 +30,17 @@ class CloudForm extends React.Component {
         credentials: "same-origin",
         method: 'POST',
         body: JSON.stringify({text: this.state.text_to_generate}),
+      }).catch((error) => {
+        if (error.response) { // if there is response, it means its not a 50x, but 4xx
+          const data = response.json();
+          console.log("Smth: ", data);
+          this.setState({receivedMessage: data.predictions});
+          const finaloutput = this.state.text_to_generate + "\nRuGPT3: " + this.state.receivedMessage;
+          this.mainInput.value = finaloutput;
+        } else {
+          this.mainInput.value = "К сожалению, не удалось обработать ваш запрос из-за за высокой нагрузки. Приносим свои извинения. Попробуйте позже";
+        }            
       });
-    
-    const data = await response.json();
-    this.setState({receivedMessage: data.predictions});
-    
-    const finaloutput = this.state.text_to_generate + "\nRuGPT3: " + this.state.receivedMessage;
-    console.log("response: ", finaloutput);
-	  this.mainInput.value = finaloutput;
   }
 
   render() {
