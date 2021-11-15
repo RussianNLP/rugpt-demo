@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/rugpt-demo/static/css/main.4325db6f.chunk.css",
-    "main.js": "/rugpt-demo/static/js/main.a7a8010b.chunk.js",
-    "main.js.map": "/rugpt-demo/static/js/main.a7a8010b.chunk.js.map",
+    "main.js": "/rugpt-demo/static/js/main.e33ec27a.chunk.js",
+    "main.js.map": "/rugpt-demo/static/js/main.e33ec27a.chunk.js.map",
     "runtime-main.js": "/rugpt-demo/static/js/runtime-main.7fb4d291.js",
     "runtime-main.js.map": "/rugpt-demo/static/js/runtime-main.7fb4d291.js.map",
     "static/js/2.73d4de35.chunk.js": "/rugpt-demo/static/js/2.73d4de35.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.7fb4d291.js",
     "static/js/2.73d4de35.chunk.js",
     "static/css/main.4325db6f.chunk.css",
-    "static/js/main.a7a8010b.chunk.js"
+    "static/js/main.e33ec27a.chunk.js"
   ]
 }
