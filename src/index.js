@@ -23,16 +23,17 @@ class CloudForm extends React.Component {
     this.mainInput.value = "Loading...";
     event.preventDefault();
 
-    fetch('https://api.aicloud.sbercloud.ru/public/v1/public_inference/gpt3/predict', {
+    await fetch('https://api.aicloud.sbercloud.ru/public/v1/public_inference/gpt3/predict', {
       headers: {
         'Content-Type': 'application/json'
       },
       credentials: "same-origin",
       method: 'POST',
       body: JSON.stringify({ text: this.state.text_to_generate }),
-    }).then(response => {
+    }).then( response => {
         const data = response.json();
-        console.log("Smth: ", data);
+        console.log("Smth: ", data.predictions);
+        console.log("res: ", data["predictions"]);
         this.setState({ receivedMessage: data.predictions });
         const finaloutput = this.state.text_to_generate + "\nRuGPT3: " + this.state.receivedMessage;
         this.mainInput.value = finaloutput;
