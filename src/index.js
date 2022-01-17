@@ -7,8 +7,8 @@ class CloudForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-    	text_to_generate: null,
-    	receivedMessage: "Loading"
+      text_to_generate: null,
+      receivedMessage: "Loading"
     };
     this.mainInput = {};
   }
@@ -18,7 +18,6 @@ class CloudForm extends React.Component {
   }
   
   handleSubmit = async (event) => {
-   	console.log("Text prompt: ", {"text": JSON.stringify(this.state.text_to_generate)});
 
     this.mainInput.value = "Loading...";
     event.preventDefault();
@@ -30,38 +29,41 @@ class CloudForm extends React.Component {
         credentials: "same-origin",
         method: 'POST',
         body: JSON.stringify({text: this.state.text_to_generate}),
-      });
-    
-    console.log(response);
-    const data = await response.json();
-    this.setState({receivedMessage: data.predictions});
-    console.log(data.predictions);
-    const finaloutput = this.state.text_to_generate + "\nRuGPT3: " + this.state.receivedMessage;
-    console.log("response: ", finaloutput);
-    this.mainInput.value = finaloutput;
+    }).catch(error => {
+        this.mainInput.value = "К сожалению, не удалось обработать ваш запрос. У нас технические проблемы. Приносим свои извинения. Попробуйте позже.";
+    });
+
+    if (response){
+        const data = response.json();
+        this.setState({receivedMessage: data.predictions});
+        const finaloutput = this.state.text_to_generate + "\nRuGPT3: " + this.state.receivedMessage;
+        this.mainInput.value = finaloutput;
+      } else {
+          this.mainInput.value = "К сожалению, не удалось обработать ваш запрос. У нас технические проблемы. Приносим свои извинения. Попробуйте позже.";
+      };
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit} id="demoform" class="w-100 justify-content-center">
         <div>
-        	<p class="text-center"><b>Введите текст:</b></p>
+          <p class="text-center"><b>Введите текст:</b></p>
         </div>
         <div class="row">
           <textarea 
             ref={(ref) => this.mainInput= ref}
             value={this.state.value}
-          	name="text_to_generate" 
-          	onChange={this.handleChange} 
-          	rows="15"
+            name="text_to_generate" 
+            onChange={this.handleChange} 
+            rows="15"
             class="textareacls"
-          	>
-          	</textarea>
+            >
+            </textarea>
         </div>
 
         <div class="row">
-        	<input type="submit" value="Дополнить" class="btn btn-success" />
-        </div>	
+          <input type="submit" value="Дополнить" class="btn btn-success" />
+        </div>  
       </form>
     );
   }
@@ -96,4 +98,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
