@@ -29,18 +29,25 @@ class CloudForm extends React.Component {
         credentials: "same-origin",
         method: 'POST',
         body: JSON.stringify({text: this.state.text_to_generate}),
-    }).catch(error => {
-        this.mainInput.value = "К сожалению, не удалось обработать ваш запрос. У нас технические проблемы. Приносим свои извинения. Попробуйте позже.";
-    });
+    })
 
-    if (response){
-        const data = response.json();
-        this.setState({receivedMessage: data.predictions});
-        const finaloutput = this.state.text_to_generate + "\nRuGPT3: " + this.state.receivedMessage;
-        this.mainInput.value = finaloutput;
-      } else {
-          this.mainInput.value = "К сожалению, не удалось обработать ваш запрос. У нас технические проблемы. Приносим свои извинения. Попробуйте позже.";
-      };
+    const data = await response.json();
+    console.log(data);
+    this.setState({receivedMessage: data.predictions});
+    console.log(data.predictions);
+    const finaloutput = this.state.text_to_generate + "\nRuGPT3: " + this.state.receivedMessage;
+    console.log("response: ", finaloutput);
+    this.mainInput.value = finaloutput;
+
+  //   .then((res) => {
+		// const data = response.json();
+  //       this.setState({receivedMessage: data.predictions});
+  //       const finaloutput = this.state.text_to_generate + "\nRuGPT3: " + this.state.receivedMessage;
+  //       this.mainInput.value = finaloutput;
+  //   }).catch(error => {
+  //       this.mainInput.value = "К сожалению, не удалось обработать ваш запрос. У нас технические проблемы. Приносим свои извинения. Попробуйте позже.";
+  //       console.log(error.response);
+  //   });
   }
 
   render() {
